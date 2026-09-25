@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Colors */
+  --color-navy: #101820;
+  --color-copper: #C9824B;
+  --color-bg: #F5F3EE;
+  --color-white: #FFFFFF;
+  --color-text: #101820;
+  --color-text-secondary: #667078;
+  --color-text-muted: #8B9298;
+  --color-border: #D9D6CF;
+  --color-success: #4D7657;
+  
+  /* Fonts */
+  --font-sans: var(--font-manrope), var(--font-noto-bengali), system-ui, sans-serif;
+  
+  /* Spacing */
+  --spacing-section: 8rem;
+  --spacing-section-md: 6rem;
+  --spacing-section-sm: 4rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-copper) 30%, transparent);
+  }
+}
+
+@layer utilities {
+  .container-main {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  
+  @media (min-width: 768px) {
+    .container-main {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container-main {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+  
+  @media (min-width: 1440px) {
+    .container-main {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  @media (min-width: 768px) {
+    .section-padding {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding-top: 7.5rem;
+      padding-bottom: 7.5rem;
+    }
+  }
+}
