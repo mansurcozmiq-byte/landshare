@@ -1,24 +1,21 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Colors */
-  --color-navy: #101820;
-  --color-copper: #C9824B;
-  --color-bg: #F5F3EE;
+  /* Brand Colors — Skyblue + Yellow-Orange */
+  --color-primary: #0EA5E9;
+  --color-primary-dark: #0284C7;
+  --color-accent: #F59E0B;
+  --color-accent-dark: #D97706;
+  --color-bg: #F8FAFC;
   --color-white: #FFFFFF;
-  --color-text: #101820;
-  --color-text-secondary: #667078;
-  --color-text-muted: #8B9298;
-  --color-border: #D9D6CF;
-  --color-success: #4D7657;
+  --color-text: #0F172A;
+  --color-text-secondary: #64748B;
+  --color-text-muted: #94A3B8;
+  --color-border: #E2E8F0;
+  --color-success: #10B981;
   
   /* Fonts */
   --font-sans: var(--font-manrope), var(--font-noto-bengali), system-ui, sans-serif;
-  
-  /* Spacing */
-  --spacing-section: 8rem;
-  --spacing-section-md: 6rem;
-  --spacing-section-sm: 4rem;
 }
 
 @layer base {
@@ -35,7 +32,7 @@
   }
   
   ::selection {
-    background-color: color-mix(in srgb, var(--color-copper) 30%, transparent);
+    background-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
   }
 }
 
