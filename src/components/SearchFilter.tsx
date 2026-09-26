@@ -3,36 +3,38 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Button from "./Button";
-
-const propertyTypes = [
-  { value: "", label: "Property Type" },
-  { value: "property-share", label: "Property Share" },
-  { value: "flat", label: "Flat for Sale" },
-];
-
-const locations = [
-  { value: "", label: "Location" },
-  { value: "dhaka", label: "Dhaka" },
-  { value: "uttara", label: "Uttara" },
-  { value: "purbachal", label: "Purbachal" },
-  { value: "bashundhara", label: "Bashundhara" },
-  { value: "mirpur", label: "Mirpur" },
-  { value: "other", label: "Other locations" },
-];
-
-const availabilities = [
-  { value: "", label: "Availability" },
-  { value: "available-now", label: "Available Now" },
-  { value: "new-project", label: "New Project" },
-  { value: "under-construction", label: "Under Construction" },
-  { value: "ready", label: "Ready" },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function SearchFilter() {
   const router = useRouter();
+  const { t } = useLanguage();
   const [type, setType] = useState("");
   const [location, setLocation] = useState("");
   const [availability, setAvailability] = useState("");
+
+  const propertyTypes = [
+    { value: "", label: t("searchPropertyType") },
+    { value: "property-share", label: t("typePropertyShare") },
+    { value: "flat", label: t("typeFlat") },
+  ];
+
+  const locations = [
+    { value: "", label: t("searchLocation") },
+    { value: "dhaka", label: t("locDhaka") },
+    { value: "uttara", label: t("locUttara") },
+    { value: "purbachal", label: t("locPurbachal") },
+    { value: "bashundhara", label: t("locBashundhara") },
+    { value: "mirpur", label: t("locMirpur") },
+    { value: "other", label: t("locOther") },
+  ];
+
+  const availabilities = [
+    { value: "", label: t("searchAvailability") },
+    { value: "available-now", label: t("availNow") },
+    { value: "new-project", label: t("availNew") },
+    { value: "under-construction", label: t("availConstruction") },
+    { value: "ready", label: t("availReady") },
+  ];
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,64 +51,43 @@ export default function SearchFilter() {
   };
 
   const selectClass =
-    "h-12 w-full appearance-none rounded-[5px] border border-[#D9D6CF] bg-white px-4 text-[14px] text-[#101820] focus:border-[#101820] focus:outline-none focus:ring-1 focus:ring-[#101820]";
+    "h-12 w-full appearance-none rounded-[5px] border border-[#E2E8F0] bg-white px-4 text-[14px] text-[#0F172A] focus:border-[#0EA5E9] focus:outline-none focus:ring-1 focus:ring-[#0EA5E9]";
 
   return (
     <form onSubmit={handleSearch} className="flex flex-col gap-3 md:flex-row md:items-end md:gap-4">
       <div className="flex-1">
-        <label htmlFor="property-type" className="mb-1.5 block text-[12px] font-medium uppercase tracking-[0.06em] text-[#8B9298]">
-          Property Type
+        <label htmlFor="property-type" className="mb-1.5 block text-[12px] font-medium uppercase tracking-[0.06em] text-[#94A3B8]">
+          {t("searchPropertyType")}
         </label>
-        <select
-          id="property-type"
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-          className={selectClass}
-        >
+        <select id="property-type" value={type} onChange={(e) => setType(e.target.value)} className={selectClass}>
           {propertyTypes.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
+            <option key={opt.value} value={opt.value}>{opt.label}</option>
           ))}
         </select>
       </div>
       <div className="flex-1">
-        <label htmlFor="location" className="mb-1.5 block text-[12px] font-medium uppercase tracking-[0.06em] text-[#8B9298]">
-          Location
+        <label htmlFor="location" className="mb-1.5 block text-[12px] font-medium uppercase tracking-[0.06em] text-[#94A3B8]">
+          {t("searchLocation")}
         </label>
-        <select
-          id="location"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          className={selectClass}
-        >
+        <select id="location" value={location} onChange={(e) => setLocation(e.target.value)} className={selectClass}>
           {locations.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
+            <option key={opt.value} value={opt.value}>{opt.label}</option>
           ))}
         </select>
       </div>
       <div className="flex-1">
-        <label htmlFor="availability" className="mb-1.5 block text-[12px] font-medium uppercase tracking-[0.06em] text-[#8B9298]">
-          Availability
+        <label htmlFor="availability" className="mb-1.5 block text-[12px] font-medium uppercase tracking-[0.06em] text-[#94A3B8]">
+          {t("searchAvailability")}
         </label>
-        <select
-          id="availability"
-          value={availability}
-          onChange={(e) => setAvailability(e.target.value)}
-          className={selectClass}
-        >
+        <select id="availability" value={availability} onChange={(e) => setAvailability(e.target.value)} className={selectClass}>
           {availabilities.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
+            <option key={opt.value} value={opt.value}>{opt.label}</option>
           ))}
         </select>
       </div>
-      <div className="md:pb-0">
+      <div>
         <Button type="submit" variant="primary" className="w-full md:w-auto md:min-w-[180px]">
-          Search Opportunities
+          {t("searchButton")}
         </Button>
       </div>
     </form>
