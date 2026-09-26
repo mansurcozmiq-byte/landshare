@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyWhatsApp from "@/components/StickyWhatsApp";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -21,24 +22,24 @@ const notoBengali = Noto_Sans_Bengali({
 
 export const metadata: Metadata = {
   title: {
-    default: "Verified Property Opportunities | Property Share & Flats in Bangladesh",
-    template: "%s | Verified Property Platform",
+    default: "LandShare | ভেরিফাইড প্রপার্টি শেয়ার ও ফ্ল্যাট — বাংলাদেশ",
+    template: "%s | LandShare",
   },
   description:
-    "Discover carefully reviewed property shares and residential flats across selected locations in Bangladesh. Verified opportunities. Speak directly with our team.",
+    "বাংলাদেশের নির্বাচিত লোকেশনে ভেরিফাইড প্রপার্টি শেয়ার ও আবাসিক ফ্ল্যাট। সুযোগ খুঁজুন, বিস্তারিত বুঝুন, সরাসরি টিমের সাথে কথা বলুন।",
   keywords: [
     "verified property Bangladesh",
     "property share Bangladesh",
+    "প্রপার্টি শেয়ার",
+    "ফ্ল্যাট বিক্রয় ঢাকা",
+    "ভেরিফাইড প্রপার্টি",
     "land share",
     "flat for sale Dhaka",
-    "verified real estate",
-    "residential project Bangladesh",
-    "property opportunity",
   ],
   openGraph: {
     type: "website",
-    locale: "en_BD",
-    siteName: "Verified Property Platform",
+    locale: "bn_BD",
+    siteName: "LandShare",
   },
 };
 
@@ -48,12 +49,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${notoBengali.variable}`}>
+    <html lang="bn" className={`${manrope.variable} ${notoBengali.variable}`}>
       <body className="min-h-screen flex flex-col antialiased">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <StickyWhatsApp />
+        <LanguageProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <StickyWhatsApp />
+        </LanguageProvider>
       </body>
     </html>
   );
